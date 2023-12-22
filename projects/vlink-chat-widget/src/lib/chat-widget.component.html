@@ -1,5 +1,5 @@
 <div class="chat--widget" *ngIf="!isClosed">
-  <div class="chat--widget__minimized" *ngIf="minimizeChatView else chatWidget">
+  <div class="chat--widget__minimized" [hidden]="!minimizeChatView">
     <div class="chat--widget__minimized__close" (click)="isClosed = true">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
         <path fill="#fff" fill-opacity="1" fill-rule="evenodd" stroke="none"
@@ -18,8 +18,7 @@
         alt="" srcset="">
     </div>
   </div>
-  <ng-template #chatWidget>
-    <div class="chat--widget__extend">
+    <div [hidden]="minimizeChatView" class="chat--widget__extend">
       <div class="chat--widget__extend--header">
         <div>
           <svg width="38" height="35" viewBox="0 0 38 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,5 +38,4 @@
         <iframe [src]="iframeUrl" frameborder="0"></iframe>
       </div>
     </div>
-  </ng-template>
 </div>
