@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
@@ -9,6 +9,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export class VlinkChatWidgetComponent implements OnInit {
   @Input() public iframeUrl: SafeUrl | undefined;
   @Input() public classes: string = '';
+  @Output() fetchLink: EventEmitter<any> = new EventEmitter();
   minimizeChatView: boolean = true;
   isClosed: boolean = false;
   constructor() {
@@ -18,5 +19,12 @@ export class VlinkChatWidgetComponent implements OnInit {
   }
   toggleChatView() {
     this.minimizeChatView = !this.minimizeChatView;
+  }
+  close($event: Event) {
+    $event.stopPropagation();
+    this.isClosed = true
+  }
+  forceLoadLink() {
+    this.fetchLink.emit();
   }
 }
