@@ -3,7 +3,7 @@
     <div class="chat--widget__minimized__container" (click)="toggleChatView()">
       <div class="typing-demo" *ngIf="!isClosed">
         <p>
-          Hello, <br /> I am StartechAI
+          Hello, <br /> I am Startech AI
         </p>
         <a href="javascript:void(0)" class="chat--widget__minimized__close" (click)="close($event)">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,7 +28,7 @@
   </div>
   <div [hidden]="minimizeChatView" class="chat--widget__extend">
     <div class="chat--widget__extend--header">
-      <p>StartechAI Assistant Bot</p>
+      <p>Startech AI Assistant Bot</p>
       <div>
         <button (click)="toggleChatView()" type="button" aria-label="Thu nhỏ cửa sổ">
           <svg width="38" height="35" viewBox="0 0 38 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,7 @@
                 fill="#1359C8" />
             </svg>
           </div>
-          <p class="chat--widget__start--txt">Hello Nice to see you here! By pressing the "Start chat" button you agree to have your personal data
+          <p class="chat--widget__start--txt">Hello! Nice to see you here!<br> By pressing the "Start chat" button you agree to have your personal data
             processed as described in our
             <a href="#">Privacy Policy</a>
           </p>
