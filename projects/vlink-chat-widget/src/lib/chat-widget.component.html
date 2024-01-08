@@ -1,6 +1,6 @@
 <div class="chat--widget">
   <div class="chat--widget__minimized" [hidden]="!minimizeChatView">
-    <div class="chat--widget__minimized__container" (click)="toggleChatView()">
+    <div class="chat--widget__minimized__container" (click)="toggleChatView(false)">
       <div class="typing-demo" *ngIf="!isClosed">
         <p>
           Hello, <br /> I am Startech AI
@@ -28,9 +28,9 @@
   </div>
   <div [hidden]="minimizeChatView" class="chat--widget__extend">
     <div class="chat--widget__extend--header">
-      <p>Startech AI Assistant Bot</p>
+      <p>Startech AI Assistant</p>
       <div>
-        <button (click)="toggleChatView()" type="button" aria-label="Thu nhỏ cửa sổ">
+        <button (click)="toggleChatView(true)" type="button" aria-label="Thu nhỏ cửa sổ">
           <svg width="38" height="35" viewBox="0 0 38 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.3984 17.5H26.5984" stroke="#667085" stroke-width="2" stroke-miterlimit="10"
               stroke-linecap="round" stroke-linejoin="round" />

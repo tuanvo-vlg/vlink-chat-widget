@@ -17,8 +17,8 @@ export class VlinkChatWidgetComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  toggleChatView() {
-    this.minimizeChatView = !this.minimizeChatView;
+  toggleChatView(isMinimized: boolean) {
+    this.minimizeChatView = isMinimized;
   }
   close($event: Event) {
     $event.stopPropagation();
