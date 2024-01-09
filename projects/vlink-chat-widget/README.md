@@ -22,3 +22,20 @@ Run `ng test vlink-chat-widget` to execute the unit tests via [Karma](https://ka
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# VlinkChatWidget
+
+This project was generated with [Angular CLI](https://www.npmjs.com/package/vlink-chat-widget) version 14.1.3.
+
+## Build
+| Update version before buiding (at projects/vlink-chat-widget/package.json)
+```
+    yarn build
+```
+## Publish
+ |  Login npm account
+```
+cd dist/vlink-chat-widget && npm publish
+```
+### Happy coding
