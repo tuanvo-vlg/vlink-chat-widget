@@ -3,9 +3,9 @@
         opacity: 1;
         visibility: visible;
         z-index: 1000;
-        position: relative;
+        position: fixed;
         bottom: 0px;
-        max-width: 100%;
+        max-width: 180px;
         max-height: calc(100% + 0px);
         min-height: 0px;
         min-width: 0px;
@@ -14,17 +14,12 @@
         overflow: hidden;
         right: 0px;
         transition: none 0s ease 0s !important;
-        display: flex;
         &__container {
             display: grid;
             place-items: center;
             cursor: pointer;
             min-width: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 1.25s;
-            z-index: 5;
+            max-width: 180px;
         }
         &__icon {
             max-width: 100px;
@@ -74,7 +69,7 @@
                 width: 0;
             }
         }
-
+  
         @keyframes blink {
             50% {
                 border-color: transparent;
@@ -177,4 +172,5 @@
             letter-spacing: 0.25px;
         }
     }
-}
+  }
+  

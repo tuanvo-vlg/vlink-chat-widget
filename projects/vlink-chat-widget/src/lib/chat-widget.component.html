@@ -26,41 +26,6 @@
         alt="" srcset="">
     </div>
   </div>
-  <script>
-    const menu = document.querySelector(".chat--widget__minimized");
-        const toggle = document.querySelector(".chat--widget__minimized__container");
-
-        toggle.addEventListener("click", () => {
-            menu.classList.toggle("active");
-        })
-        const draggableDiv = document.getElementById('menupopup');
-
-        let isDragging = false;
-        let offset = { x: 0, y: 0 };
-
-        draggableDiv.addEventListener('mousedown', (e) => {
-            isDragging = true;
-
-            offset.x = e.clientX - draggableDiv.getBoundingClientRect().left;
-            offset.y = e.clientY - draggableDiv.getBoundingClientRect().top;
-
-            e.preventDefault();
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-
-            const left = e.clientX - offset.x;
-            const top = e.clientY - offset.y;
-
-            draggableDiv.style.left = left + 'px';
-            draggableDiv.style.top = top + 'px';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-  </script>
   <div [hidden]="minimizeChatView" class="chat--widget__extend">
     <div class="chat--widget__extend--header">
       <p>Startech AI Assistant</p>
@@ -89,7 +54,7 @@
           </p>
           <button (click)="forceLoadLink()" class="btn btn-primary w-100">Start chat</button>
         </div>
-        
+
       </div>
       <iframe *ngIf="!!iframeUrl" [src]="iframeUrl" frameborder="0"></iframe>
     </div>
