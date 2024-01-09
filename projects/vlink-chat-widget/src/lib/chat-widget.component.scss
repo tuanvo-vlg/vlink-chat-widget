@@ -3,7 +3,7 @@
         opacity: 1;
         visibility: visible;
         z-index: 1000;
-        position: fixed;
+        position: relative;
         bottom: 0px;
         max-width: 100%;
         max-height: calc(100% + 0px);
@@ -14,11 +14,17 @@
         overflow: hidden;
         right: 0px;
         transition: none 0s ease 0s !important;
+        display: flex;
         &__container {
             display: grid;
             place-items: center;
             cursor: pointer;
             min-width: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 1.25s;
+            z-index: 5;
         }
         &__icon {
             max-width: 100px;
