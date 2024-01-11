@@ -14,52 +14,81 @@ export class VlinkChatWidgetComponent implements OnInit {
   isClosed: boolean = false;
   isDragging: boolean = false;
   clickTime: Date = new Date();
+  isTouchedCancel: boolean = false;
   constructor() {
   }
 
   ngAfterViewInit() {
-    const menu = document.querySelector(".chat--widget__minimized");
-        const toggle = document.querySelector(".chat--widget__minimized__container");
+    const draggableDiv = document.getElementById('menupopup');
 
-        toggle?.addEventListener("click", () => {
-            menu?.classList.toggle("active");
-        })
-        const draggableDiv = document.getElementById('menupopup');
+    if(draggableDiv){
+      let offset = { x: 0, y: 0 };
 
-        if(draggableDiv){
-          let offset = { x: 0, y: 0 };
+      draggableDiv.addEventListener('mousedown', (e) => {
+        this.isDragging = true;
+        this.clickTime = new Date();
+          offset.x = e.clientX - draggableDiv.getBoundingClientRect().left;
+          offset.y = e.clientY - draggableDiv.getBoundingClientRect().top;
 
-          draggableDiv.addEventListener('mousedown', (e) => {
-            this.isDragging = true;
-            this.clickTime = new Date();
-              offset.x = e.clientX - draggableDiv.getBoundingClientRect().left;
-              offset.y = e.clientY - draggableDiv.getBoundingClientRect().top;
+          e.preventDefault();
+      });
 
-              e.preventDefault();
-          });
+      document.addEventListener('mousemove', (e) => {
 
-          document.addEventListener('mousemove', (e) => {
+        if (!this.isDragging) return;
 
-            if (!this.isDragging) return;
+        const left = e.clientX - offset.x;
+        const top = e.clientY - offset.y;
 
-            const left = e.clientX - offset.x;
-            const top = e.clientY - offset.y;
+        draggableDiv.style.left = left + 'px';
+        draggableDiv.style.top = top + 'px';
 
-            draggableDiv.style.left = left + 'px';
-            draggableDiv.style.top = top + 'px';
+      });
 
-          });
+      document.addEventListener('mouseup', () => {
+        this.isDragging = false;
+      });
 
-          document.addEventListener('mouseup', () => {
-            this.isDragging = false;
-          });
+
+
+      draggableDiv.addEventListener('touchstart', (e) => {
+        this.isDragging = true;
+        this.isTouchedCancel = true;
+        this.clickTime = new Date();
+          offset.x = e.touches[0].clientX - draggableDiv.getBoundingClientRect().left;
+          offset.y = e.touches[0].clientY - draggableDiv.getBoundingClientRect().top;
+
+          e.preventDefault();
+      });
+
+      document.addEventListener('touchmove', (e) => {
+
+        if (!this.isDragging) return;
+
+        const left = e.touches[0].clientX - offset.x;
+        const top = e.touches[0].clientY - offset.y;
+
+        draggableDiv.style.left = left + 'px';
+        draggableDiv.style.top = top + 'px';
+
+      });
+
+      document.addEventListener('touchend', () => {
+        var timeSinceLastMouseUp = new Date().getTime() - this.clickTime.getTime();
+        if(timeSinceLastMouseUp < 150){
+          this.toggleChatView(false);
+          this.isTouchedCancel = true;
         }
+        this.isDragging = false;
+      });
 
-        
+    }
+
   }
 
   ngOnInit(): void {
   }
+
   toggleChatView(isMinimized: boolean) {
     if(isMinimized){
       this.minimizeChatView = isMinimized;
@@ -69,12 +98,17 @@ export class VlinkChatWidgetComponent implements OnInit {
 
     if (!this.isDragging && timeSinceLastMouseUp < 100) {
       this.minimizeChatView = isMinimized;
+    }else if(this.isTouchedCancel){
+      this.minimizeChatView = isMinimized;
+      this.isTouchedCancel = false;
     }
   }
+
   close($event: Event) {
     $event.stopPropagation();
     this.isClosed = true
   }
+  
   forceLoadLink() {
     this.fetchLink.emit();
   }

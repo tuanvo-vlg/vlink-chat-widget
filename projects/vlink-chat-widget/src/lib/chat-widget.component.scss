@@ -5,8 +5,8 @@
         z-index: 1000;
         position: fixed;
         bottom: 0px;
-        max-width: 180px;
-        max-height: calc(100% + 0px);
+        max-width: 160px;
+        max-height: 160px;
         min-height: 0px;
         min-width: 0px;
         background-color: transparent;
@@ -18,8 +18,9 @@
             display: grid;
             place-items: center;
             cursor: pointer;
-            min-width: 180px;
-            max-width: 180px;
+            min-width: 160px;
+            max-width: 160px;
+            max-height: 160px;
         }
         &__icon {
             max-width: 100px;
