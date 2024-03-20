@@ -9,6 +9,7 @@ import { SafeUrl } from '@angular/platform-browser';
 export class VlinkChatWidgetComponent implements OnInit {
   @Input() public iframeUrl: SafeUrl | undefined;
   @Input() public classes: string = '';
+  @Input() public imageUrl: string | undefined;
   @Output() fetchLink: EventEmitter<any> = new EventEmitter();
   minimizeChatView: boolean = true;
   isClosed: boolean = false;
