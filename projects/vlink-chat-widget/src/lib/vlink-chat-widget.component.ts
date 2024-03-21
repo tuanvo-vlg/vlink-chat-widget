@@ -76,7 +76,7 @@ export class VlinkChatWidgetComponent implements OnInit {
 
       document.addEventListener('touchend', () => {
         var timeSinceLastMouseUp = new Date().getTime() - this.clickTime.getTime();
-        if(timeSinceLastMouseUp < 150){
+        if(timeSinceLastMouseUp < 250){
           this.toggleChatView(false);
           this.isTouchedCancel = true;
         }
@@ -97,7 +97,7 @@ export class VlinkChatWidgetComponent implements OnInit {
     }
     const timeSinceLastMouseUp = new Date().getTime() - this.clickTime.getTime();
 
-    if (!this.isDragging && timeSinceLastMouseUp < 100) {
+    if (!this.isDragging && timeSinceLastMouseUp < 200) {
       this.minimizeChatView = isMinimized;
     }else if(this.isTouchedCancel){
       this.minimizeChatView = isMinimized;
